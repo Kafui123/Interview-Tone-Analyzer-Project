@@ -1,3 +1,4 @@
+from textblob import TextBlob
 import whisper, re
 
 # use the .load_model function in whisper to convert your file to english 
@@ -30,5 +31,21 @@ print(type(transcript1))
 with open("transcription1.txt", "w", encoding="utf-8") as f:
     f.write(transcript1)
 
+
+
+# using the textblob nlp to break the words into sentences as well as the sentiment 
+blob = TextBlob(transcript1)
+
+
+word_count = len(blob.words)
+
+sentence_count = len(blob.sentences)
+
+sentiment = blob.sentiment
+
+
+print("Word Count:", word_count)
+print("Sentence Count:", sentence_count)
+print("Sentiment (polarity, subjectivity):", sentiment)
 
 
