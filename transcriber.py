@@ -2,7 +2,7 @@ import whisper, re
 
 # use the .load_model function in whisper to convert your file to english 
 model = whisper.load_model("base")
-result = model.transcribe("WhatsApp Ptt 2025-05-24 at 21.08.19.ogg")
+result = model.transcribe("um, uh like.ogg")
 
 # save to text file 
 
@@ -14,7 +14,7 @@ with open("transcription.txt", "w", encoding="utf-8") as f:
 # loading and cleaning the transcription 
 
 with open("transcription.txt", "r") as file:
-    transcript = file.read().strip()
+    transcript1 = file.read().strip()
 
 
 
@@ -23,5 +23,12 @@ filler_words = ["um", "uh", "like", "you know", "i mean"]
 
 pattern = r'\b(?:' + '|'.join(filler_words) + r')\b'
 
-# this searches the text for anything matching pattern. and it replaces it with "" (deletees them)....
-transcript = re.sub(pattern, '', transcript, flags=re.IGNORECASE)
+# this searches the text for anything matching pattern. and it replaces it with "" (deletees them).... returns a string 
+transcript1 = re.sub(pattern, '', transcript1, flags=re.IGNORECASE)
+print(type(transcript1))
+
+with open("transcription1.txt", "w", encoding="utf-8") as f:
+    f.write(transcript1)
+
+
+
