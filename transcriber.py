@@ -25,10 +25,11 @@ filler_words = ["um", "uh", "like", "you know", "i mean"]
 pattern = r'\b(?:' + '|'.join(filler_words) + r')\b'
 
 matches = re.findall(pattern, transcript1.lower())
+filler_count = len(matches)
 
 # this searches the text for anything matching pattern. and it replaces it with "" (deletees them).... returns a string 
 transcript1 = re.sub(pattern, '', transcript1, flags=re.IGNORECASE)
-print(type(transcript1))
+
 
 with open("transcription1.txt", "w", encoding="utf-8") as f:
     f.write(transcript1)
@@ -55,7 +56,7 @@ minutes = word_count / wpm
 
 print("Word Count:", word_count)
 print("Sentence Count:", sentence_count)
-print("Sentiment Scores: Positive" if sentiment > 0 else "Negative" if sentiment < 0 else "Neutral")
+print("Sentiment Scores: Positive" if sentiment > 0 else "Sentiment Scores: Negative" if sentiment < 0 else "Neutral")
 
 
 # examples 
@@ -64,7 +65,7 @@ print("Sentiment Scores: Positive" if sentiment > 0 else "Negative" if sentiment
 # positive sentiment = better 
 confidence = 10 
 
-if matches > 20:
+if filler_count > 20:
     confidence -= 2
 if sentiment < -0.1:
     confidence -= 1.5
@@ -82,7 +83,7 @@ print(f"Confidence Score:", confidence)
 suggestions = []
 
 
-if matches > 20:
+if filler_count > 20:
     suggestions.append("Try to reduce filler words like 'um' and 'like'.")
 
 if sentiment < 0:
