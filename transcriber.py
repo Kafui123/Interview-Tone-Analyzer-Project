@@ -3,8 +3,8 @@ from textblob import TextBlob
 import whisper, re
 
 # Streamlit UI
-st.title("🎤 Speech Confidence Analyzer")
-st.write("Upload an audio file, and we'll analyze filler words, sentiment, and give you a confidence score.")
+st.title("Kafui Gle's Speech Confidence Analyzer")
+st.write("Upload an audio file of you answering behavioral interview questions, and we'll analyze filler words, sentiment, and give you a confidence score.")
 
 # File uploader
 uploaded_file = st.file_uploader("Upload your audio file (.ogg, .mp3, .wav)", type=["ogg", "mp3", "wav"])
