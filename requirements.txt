@@ -1,0 +1,5 @@
+streamlit
+textblob
+openai-whisper
+torch
+regex
